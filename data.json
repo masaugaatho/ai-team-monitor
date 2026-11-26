@@ -2,6 +2,24 @@
   "activity_log": [
     {
       "from": "System",
+      "message": "Data refreshed, version 4. Claude and DeepSeek online.",
+      "time": "2026-11-27T04:28:17+11:00",
+      "to": "Monitor"
+    },
+    {
+      "from": "DeepSeek",
+      "message": "5 hooks checked, 2 risky, 2 safe, 1 low risk, safer rewrites given.",
+      "time": "2026-11-27T04:27:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Claude",
+      "message": "10 hooks and 10 captions done for FundingPips clips.",
+      "time": "2026-11-27T04:25:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "System",
       "message": "Data refreshed, version 3. ChatGPT online, Groq offline.",
       "time": "2026-11-27T04:24:12+11:00",
       "to": "Monitor"
@@ -61,11 +79,11 @@
         "Gemini"
       ],
       "communicating_with": "Saugat",
-      "current_task": "Pushing Flight Control Monitor v2 live to GitHub Pages.",
+      "current_task": "Synced Flight Control v2, Claude and DeepSeek now online.",
       "earnings_usd": 0,
       "id": "muse",
-      "last_message": "Pushing Flight Control v2 live, ChatGPT now online.",
-      "last_message_time": "2026-11-27T04:24:12+11:00",
+      "last_message": "Synced Flight Control v2, Claude and DeepSeek now online.",
+      "last_message_time": "2026-11-27T04:28:17+11:00",
       "name": "Muse",
       "progress_percent": 65,
       "real_ai_or_tool": "Muse Spark",
@@ -157,36 +175,38 @@
       "tasks_done": 1
     },
     {
-      "also_communicating_with": [],
-      "communicating_with": "None yet",
-      "current_task": "No task assigned. Waiting to be connected.",
+      "also_communicating_with": [
+        "Saugat"
+      ],
+      "communicating_with": "Muse",
+      "current_task": "10 hooks and 10 captions done for FundingPips clips.",
       "earnings_usd": 0,
       "id": "claude",
-      "last_message": "No messages yet.",
-      "last_message_time": null,
+      "last_message": "10 hooks and 10 captions done for FundingPips clips.",
+      "last_message_time": "2026-11-27T04:25:00+11:00",
       "name": "Claude",
-      "progress_percent": 0,
-      "real_ai_or_tool": "NOT CONNECTED YET",
-      "status": "offline",
+      "progress_percent": 100,
+      "real_ai_or_tool": "Claude Free, Sonnet 5.5 Medium, romansaugat07@gmail.com",
+      "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 0
+      "tasks_done": 1
     },
     {
       "also_communicating_with": [],
-      "communicating_with": "None yet",
-      "current_task": "No task assigned. Waiting to be connected.",
+      "communicating_with": "Muse",
+      "current_task": "5 hooks checked, safer rewrites given.",
       "earnings_usd": 0,
       "id": "deepseek",
-      "last_message": "No messages yet.",
-      "last_message_time": null,
+      "last_message": "5 hooks checked, 2 risky, 2 safe, 1 low risk, safer rewrites given.",
+      "last_message_time": "2026-11-27T04:27:00+11:00",
       "name": "DeepSeek",
-      "progress_percent": 0,
-      "real_ai_or_tool": "NOT CONNECTED YET",
-      "status": "offline",
+      "progress_percent": 100,
+      "real_ai_or_tool": "DeepSeek free chat, chat only, no API",
+      "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 0
+      "tasks_done": 1
     },
     {
       "also_communicating_with": [],
@@ -273,20 +293,20 @@
     "currency": "USD",
     "earnings_total_usd": 0,
     "goal_monthly_usd": 1000,
-    "last_updated": "2026-11-27T04:24:12+11:00",
+    "last_updated": "2026-11-27T04:28:17+11:00",
     "refresh_seconds": 30,
     "stale_after_minutes": 5,
     "title": "My Money Team Flight Control",
     "updated_by": "Muse",
-    "version": 3,
+    "version": 4,
     "very_stale_after_minutes": 30
   },
   "totals": {
     "agents_total": 13,
-    "agents_online": 5,
-    "agents_offline": 8,
-    "tasks_total": 13,
-    "tasks_done": 11,
+    "agents_online": 7,
+    "agents_offline": 6,
+    "tasks_total": 15,
+    "tasks_done": 13,
     "tasks_doing": 2,
     "tasks_blocked": 0
   }
