@@ -691,12 +691,12 @@
     "currency": "USD",
     "earnings_total_usd": 0,
     "goal_monthly_usd": 1000,
-    "last_updated": "2026-11-27T06:15:00+11:00",
+    "last_updated": "2026-11-27T06:21:23+11:00",
     "refresh_seconds": 15,
     "stale_after_minutes": 5,
     "title": "My Money Team Flight Control",
     "updated_by": "Muse",
-    "version": 8,
+    "version": 9,
     "very_stale_after_minutes": 30
   },
   "pipeline": {

@@ -49,7 +49,7 @@ My Money Team Flight Control. A live board that shows the full automated workflo
 ## Files
 
 - index.html: the board, pipeline, agent cards, log, fetches data.json every 15 seconds.
-- style.css: dark theme, mobile first.
+- style.css: neon dark theme, glassy cards, gradient gauge, pipeline stepper with numbered circles, 15 second refresh, mobile first.
 - data.json: meta, pipeline, totals, 23 agents, activity log, newest first, max 50 entries.
 - README.md: this file.
 
