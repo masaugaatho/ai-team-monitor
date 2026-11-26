@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Money Team</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>My Money Team <span class="pill"><span class="dot working"></span>Live now</span></h1>
+<p class="sub">Your AI team, working for you. Updates by itself. No need to press anything.</p>
+
+<div class="card">
+<div class="big" id="earned">$0 of $1,000</div>
+<div class="muted" id="percent">0% there. Still $1,000 to go.</div>
+<div class="gauge" style="margin-top:10px"><div id="bar"></div></div>
+<div class="muted" style="margin-top:10px" id="counts">5 Finished, 3 Working, 0 Stuck</div>
+<div class="muted" id="updated">Last updated: loading</div>
+</div>
+
+<h2>Agents</h2>
+<div id="agents"><p class="muted">Loading agents...</p></div>
+
+<h2>Tasks</h2>
+<div class="card"><ul id="tasks"></ul></div>
+
+<h2>Money earned</h2>
+<div class="card"><p id="earnings">No money yet. $0 so far this month. This page only shows real money, never fake money.</p></div>
+
+<footer>Free GitHub Pages site. No passwords, no private details here. Muse updates the data when a team finishes.</footer>
+
+<script>
+async function load() {
+  try {
+    const res = await fetch('data.json?x=' + Date.now());
+    const d = await res.json();
+    const goal = d.monthly_goal_usd || 1000;
+    const earned = d.earnings_usd || 0;
+    const pct = goal ? Math.round(earned / goal * 100) : 0;
+    document.getElementById('earned').textContent = '$' + earned + ' of $' + goal;
+    document.getElementById('percent').textContent = pct + '% there. Still $' + (goal - earned) + ' to go.';
+    document.getElementById('bar').style.width = Math.min(100, pct) + '%';
+    const done = (d.tasks || []).filter(t => t.status === 'done').length;
+    const doing = (d.tasks || []).filter(t => t.status === 'doing').length;
+    const stuck = (d.tasks || []).filter(t => t.status === 'blocked').length;
+    document.getElementById('counts').textContent = done + ' Finished, ' + doing + ' Working, ' + stuck + ' Stuck';
+    document.getElementById('updated').textContent = 'Last updated: ' + (d.last_updated || 'unknown');
+    const agents = (d.agents || []).slice().sort((a, b) => (a.status === 'working' ? 0 : 1) - (b.status === 'working' ? 0 : 1));
+    document.getElementById('agents').innerHTML = agents.map(a => {
+      const dot = a.status === 'working' ? 'working' : a.status === 'done' ? 'done' : 'queued';
+      const label = a.status === 'working' ? 'Working' : a.status === 'done' ? 'Finished' : a.status;
+      return '<div class="agent"><h3><span class="dot ' + dot + '"></span>' + a.name + '</h3>' +
+        '<p>' + a.role + '</p>' +
+        '<p><span class="pill">' + label + '</span></p>' +
+        '<p><strong>Now:</strong> ' + a.current_task + '</p>' +
+        '<p class="muted">Tools: ' + a.tools + '</p></div>';
+    }).join('');
+    document.getElementById('tasks').innerHTML = (d.tasks || []).map(t => {
+      const icon = t.status === 'done' ? 'Finished' : t.status === 'doing' ? 'Working' : t.status;
+      return '<li><strong>' + icon + ':</strong> ' + t.title + '</li>';
+    }).join('');
+    if ((d.earnings || []).length) {
+      document.getElementById('earnings').textContent = d.earnings.map(e => e.date + ' ' + e.source + ' $' + e.amount_usd).join(', ');
+    }
+  } catch (e) {
+    document.getElementById('agents').innerHTML = '<p>Could not load data yet. Please refresh in a minute.</p>';
+  }
+}
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>
