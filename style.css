@@ -9,6 +9,25 @@ h1 { font-size: 20px; margin: 0; }
 .live.verystale .dot { background: #EF4444; }
 .live.off .dot { background: #6B7280; }
 .sub { color: #9AA7B4; font-size: 13px; margin: 6px 0 0; }
+.section { font-size: 18px; margin: 20px 0 0; }
+.pipeline { background: #161D27; border: 1px solid #26303D; border-radius: 12px; padding: 16px; margin-top: 12px; }
+.pipeline h2 { font-size: 18px; margin: 0; }
+.steps { list-style: none; padding: 0; margin: 12px 0 0; }
+.step { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #26303D; }
+.step:last-child { border-bottom: none; }
+.stepdot { flex: 0 0 auto; width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; background: #6B7280; }
+.step.done .stepdot { background: #22C55E; }
+.step.doing .stepdot { background: #F59E0B; animation: pulse 1.2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.35; } 100% { opacity: 1; } }
+.stepbody { flex: 1; min-width: 0; }
+.stepline { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.stepline b { font-size: 15px; }
+.chip { font-size: 11px; font-weight: bold; padding: 3px 8px; border-radius: 20px; white-space: nowrap; }
+.chip.done { background: #14532D; color: #4ADE80; }
+.chip.doing { background: #78350F; color: #FBBF24; }
+.chip.waiting { background: #26303D; color: #9AA7B4; }
+.step p { font-size: 13px; margin: 4px 0 0; color: #9AA7B4; }
+.step p.note { color: #FFFFFF; }
 .gauge { background: #161D27; border: 1px solid #26303D; border-radius: 12px; padding: 16px; margin-top: 12px; }
 .gauge .big { font-size: 28px; font-weight: bold; }
 .bar { height: 14px; background: #26303D; border-radius: 7px; overflow: hidden; margin-top: 8px; }
@@ -30,7 +49,7 @@ h1 { font-size: 20px; margin: 0; }
 .status.offline .dot { background: #6B7280; }
 .pbar { height: 8px; background: #26303D; border-radius: 4px; overflow: hidden; margin: 8px 0 4px; }
 .pbar > span { display: block; height: 100%; background: #22C55E; }
-.card p { font-size: 14px; margin: 8px 0; }
+.card p { font-size: 14px; margin: 8px 0; word-break: break-word; }
 .card .label { color: #9AA7B4; font-size: 12px; text-transform: uppercase; display: block; }
 .log { background: #161D27; border: 1px solid #26303D; border-radius: 12px; padding: 16px; margin-top: 12px; }
 .log h2 { margin-top: 0; }
