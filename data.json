@@ -2,6 +2,96 @@
   "activity_log": [
     {
       "from": "System",
+      "message": "Data refreshed, version 7. Cloud browser sign-ins done, Hailuo failed, n8n needs password.",
+      "time": "2026-11-27T06:02:00+11:00",
+      "to": "Monitor"
+    },
+    {
+      "from": "n8n",
+      "message": "No Google sign-in on n8n, needs Saugat's own password, not signed in on cloud browser yet.",
+      "time": "2026-11-27T06:01:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Hailuo",
+      "message": "Cloud browser sign-in failed, login failed after Google accepted 5 times, retry pending.",
+      "time": "2026-11-27T06:00:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "OpenRouter",
+      "message": "Signed in on Muse cloud browser, Free models, $0 credits.",
+      "time": "2026-11-27T05:59:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Groq",
+      "message": "Signed in on Muse cloud browser, Free tier. API still works.",
+      "time": "2026-11-27T05:57:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Make",
+      "message": "Signed in on Muse cloud browser, Free plan, 0 credits used.",
+      "time": "2026-11-27T05:55:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Kling",
+      "message": "Signed in on Muse cloud browser, Free plan, 66 credits, expires Dec 28.",
+      "time": "2026-11-27T05:52:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "NotebookLM",
+      "message": "Signed in on Muse cloud browser, AI Pro, 7 notebooks found.",
+      "time": "2026-11-27T05:50:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "CapCut",
+      "message": "Signed in on Muse cloud browser, Free plan, 0 credits.",
+      "time": "2026-11-27T05:47:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Vizard",
+      "message": "Signed in on Muse cloud browser, Free plan, 60 credits.",
+      "time": "2026-11-27T05:44:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "OpusClip",
+      "message": "Signed in on Muse cloud browser, Free plan, 60 credits.",
+      "time": "2026-11-27T05:41:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Perplexity",
+      "message": "Signed in on Muse cloud browser, Free plan.",
+      "time": "2026-11-27T05:39:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "DeepSeek",
+      "message": "Signed in on Muse cloud browser, free chat.",
+      "time": "2026-11-27T05:38:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "Claude",
+      "message": "Signed in on Muse cloud browser, Free plan, phone tap approved.",
+      "time": "2026-11-27T05:37:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "ChatGPT",
+      "message": "Signed in on Muse cloud browser, Free plan.",
+      "time": "2026-11-27T05:34:00+11:00",
+      "to": "Muse"
+    },
+    {
+      "from": "System",
       "message": "Data refreshed, version 6. Groq API now connected.",
       "time": "2026-11-27T05:16:30+11:00",
       "to": "Monitor"
@@ -163,11 +253,11 @@
         "Gemini"
       ],
       "communicating_with": "Saugat",
-      "current_task": "Synced Flight Control v2 to version 5, all 14 real AIs now online.",
+      "current_task": "Synced Flight Control v2 to version 7, cloud browser sign-ins done.",
       "earnings_usd": 0,
       "id": "muse",
-      "last_message": "Synced Flight Control v2 to version 5, all 14 real AIs now online.",
-      "last_message_time": "2026-11-27T05:10:30+11:00",
+      "last_message": "Synced Flight Control v2 to version 7, cloud browser sign-ins done.",
+      "last_message_time": "2026-11-27T06:02:00+11:00",
       "name": "Muse",
       "progress_percent": 70,
       "real_ai_or_tool": "Muse Spark",
@@ -229,14 +319,48 @@
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "API connected, key saugat-clips-2 saved in vault, chat tested and working.",
+      "current_task": "Signed in on Muse cloud browser with Google, Free tier. API connected, key saugat-clips-2 saved, chat tested.",
       "earnings_usd": 0,
       "id": "groq",
-      "last_message": "API connected, chat test passed on gpt-oss-20b.",
-      "last_message_time": "2026-11-27T05:16:00+11:00",
+      "last_message": "Signed in on cloud browser, Free tier. API still works.",
+      "last_message_time": "2026-11-27T05:57:00+11:00",
       "name": "Groq",
       "progress_percent": 100,
-      "real_ai_or_tool": "Groq Free API, key saved, chat tested",
+      "real_ai_or_tool": "Groq Free API, key saved, chat tested, cloud browser signed in",
+      "status": "online",
+      "tasks_blocked": 0,
+      "tasks_doing": 0,
+      "tasks_done": 3
+    },
+    {
+      "also_communicating_with": [],
+      "communicating_with": "Muse",
+      "current_task": "Signed in on Muse cloud browser, Free, ready for tasks without Saugat's laptop.",
+      "earnings_usd": 0,
+      "id": "chatgpt",
+      "last_message": "Signed in on cloud browser, Free plan.",
+      "last_message_time": "2026-11-27T05:34:00+11:00",
+      "name": "ChatGPT",
+      "progress_percent": 100,
+      "real_ai_or_tool": "ChatGPT Free, @romansaugat07",
+      "status": "online",
+      "tasks_blocked": 0,
+      "tasks_doing": 0,
+      "tasks_done": 2
+    },
+    {
+      "also_communicating_with": [
+        "Saugat"
+      ],
+      "communicating_with": "Muse",
+      "current_task": "Signed in on Muse cloud browser, Free, ready for tasks without Saugat's laptop.",
+      "earnings_usd": 0,
+      "id": "claude",
+      "last_message": "Signed in on cloud browser, Free plan, phone tap approved.",
+      "last_message_time": "2026-11-27T05:37:00+11:00",
+      "name": "Claude",
+      "progress_percent": 100,
+      "real_ai_or_tool": "Claude Free, Sonnet 5.5 Medium, romansaugat07@gmail.com",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
@@ -245,61 +369,27 @@
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "5 money ideas done. Next: weekly clips first.",
-      "earnings_usd": 0,
-      "id": "chatgpt",
-      "last_message": "5 money ideas done, weekly clips first",
-      "last_message_time": "2026-11-27T04:20:00+11:00",
-      "name": "ChatGPT",
-      "progress_percent": 100,
-      "real_ai_or_tool": "ChatGPT Free, @romansaugat07",
-      "status": "online",
-      "tasks_blocked": 0,
-      "tasks_doing": 0,
-      "tasks_done": 1
-    },
-    {
-      "also_communicating_with": [
-        "Saugat"
-      ],
-      "communicating_with": "Muse",
-      "current_task": "10 hooks and 10 captions done for FundingPips clips.",
-      "earnings_usd": 0,
-      "id": "claude",
-      "last_message": "10 hooks and 10 captions done for FundingPips clips.",
-      "last_message_time": "2026-11-27T04:25:00+11:00",
-      "name": "Claude",
-      "progress_percent": 100,
-      "real_ai_or_tool": "Claude Free, Sonnet 5.5 Medium, romansaugat07@gmail.com",
-      "status": "online",
-      "tasks_blocked": 0,
-      "tasks_doing": 0,
-      "tasks_done": 1
-    },
-    {
-      "also_communicating_with": [],
-      "communicating_with": "Muse",
-      "current_task": "5 hooks checked, safer rewrites given.",
+      "current_task": "Signed in on Muse cloud browser, free chat, ready for tasks without Saugat's laptop.",
       "earnings_usd": 0,
       "id": "deepseek",
-      "last_message": "5 hooks checked, 2 risky, 2 safe, 1 low risk, safer rewrites given.",
-      "last_message_time": "2026-11-27T04:27:00+11:00",
+      "last_message": "Signed in on cloud browser, free chat.",
+      "last_message_time": "2026-11-27T05:38:00+11:00",
       "name": "DeepSeek",
       "progress_percent": 100,
       "real_ai_or_tool": "DeepSeek free chat, chat only, no API",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free Cloud trial, 14 days, 0 of 1000 executions used, 0 workflows.",
+      "current_task": "Cloud trial, 14 days, 0 workflows. No Google sign-in on n8n, needs Saugat's own password typed by him.",
       "earnings_usd": 0,
       "id": "n8n",
-      "last_message": "Free trial started, thesaugaat app, 14 days left.",
-      "last_message_time": "2026-11-27T04:41:00+11:00",
+      "last_message": "Not signed in on cloud browser yet, n8n has no Google sign-in, only email and password.",
+      "last_message_time": "2026-11-27T06:01:00+11:00",
       "name": "n8n",
       "progress_percent": 100,
       "real_ai_or_tool": "n8n Cloud Trial, thesaugaat app",
@@ -311,144 +401,144 @@
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 1000 credits a month, 0 used, resets Dec 27 2026.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, 1000 credits a month, 0 used. API token still needs correct re-paste, 401.",
       "earnings_usd": 0,
       "id": "make",
-      "last_message": "Free account made, 1000 credits, 0 used.",
-      "last_message_time": "2026-11-27T04:33:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan, 0 credits used.",
+      "last_message_time": "2026-11-27T05:55:00+11:00",
       "name": "Make",
       "progress_percent": 100,
       "real_ai_or_tool": "Make Free, 1000 credits a month",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 60 credits, 0 used, no clips made yet.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, 60 credits, no clips made yet.",
       "earnings_usd": 0,
       "id": "opusclip",
-      "last_message": "Signed in free, 60 credits, 0 used.",
-      "last_message_time": "2026-11-27T04:51:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan, 60 credits.",
+      "last_message_time": "2026-11-27T05:41:00+11:00",
       "name": "OpusClip",
       "progress_percent": 100,
       "real_ai_or_tool": "OpusClip Free, 60 credits",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 60 credits, no clips made yet.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, 60 credits, no clips made yet.",
       "earnings_usd": 0,
       "id": "vizard",
-      "last_message": "Signed in free, 60 credits.",
-      "last_message_time": "2026-11-27T05:00:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan, 60 credits.",
+      "last_message_time": "2026-11-27T05:44:00+11:00",
       "name": "Vizard",
       "progress_percent": 100,
       "real_ai_or_tool": "Vizard Free, 60 credits",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 0 credits, no videos edited yet.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, 0 credits, no videos edited yet.",
       "earnings_usd": 0,
       "id": "capcut",
-      "last_message": "Signed in free, 0 credits.",
-      "last_message_time": "2026-11-27T05:03:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan, 0 credits.",
+      "last_message_time": "2026-11-27T05:47:00+11:00",
       "name": "CapCut",
       "progress_percent": 100,
       "real_ai_or_tool": "CapCut Free, 0 credits",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 5 small businesses found for outreach.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, ready for tasks without Saugat's laptop.",
       "earnings_usd": 0,
       "id": "perplexity",
-      "last_message": "Signed in free, 5 small businesses found.",
-      "last_message_time": "2026-11-27T04:47:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan.",
+      "last_message_time": "2026-11-27T05:39:00+11:00",
       "name": "Perplexity",
       "progress_percent": 100,
       "real_ai_or_tool": "Perplexity Free",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free models only, 2 keys exist, $0 credits.",
+      "current_task": "Signed in on Muse cloud browser, Free models, $0 credits. API key still needs correct re-paste, 401.",
       "earnings_usd": 0,
       "id": "openrouter",
-      "last_message": "Signed in free, 2 keys exist, $0 credits.",
-      "last_message_time": "2026-11-27T04:49:00+11:00",
+      "last_message": "Signed in on cloud browser, Free models, $0 credits.",
+      "last_message_time": "2026-11-27T05:59:00+11:00",
       "name": "OpenRouter",
       "progress_percent": 100,
       "real_ai_or_tool": "OpenRouter Free models, $0 credits",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "AI Pro Plus verified, 7 notebooks, no new notebook made.",
+      "current_task": "Signed in on Muse cloud browser, AI Pro Plus, 7 notebooks, no new notebook made.",
       "earnings_usd": 0,
       "id": "notebooklm",
-      "last_message": "Plus verified, AI Pro, 7 notebooks found.",
-      "last_message_time": "2026-11-27T05:04:00+11:00",
+      "last_message": "Signed in on cloud browser, AI Pro, 7 notebooks found.",
+      "last_message_time": "2026-11-27T05:50:00+11:00",
       "name": "NotebookLM",
       "progress_percent": 100,
       "real_ai_or_tool": "NotebookLM Plus, AI Pro",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 66 free monthly credits, expires Dec 28 2026, test only.",
+      "current_task": "Signed in on Muse cloud browser, Free plan, 66 free monthly credits, expires Dec 28 2026, test only.",
       "earnings_usd": 0,
       "id": "kling",
-      "last_message": "Signed in free, 66 free monthly credits, expires Dec 28.",
-      "last_message_time": "2026-11-27T05:08:00+11:00",
+      "last_message": "Signed in on cloud browser, Free plan, 66 credits, expires Dec 28.",
+      "last_message_time": "2026-11-27T05:52:00+11:00",
       "name": "Kling",
       "progress_percent": 100,
       "real_ai_or_tool": "Kling Free, 66 credits, test only",
       "status": "online",
       "tasks_blocked": 0,
       "tasks_doing": 0,
-      "tasks_done": 1
+      "tasks_done": 2
     },
     {
       "also_communicating_with": [],
       "communicating_with": "Muse",
-      "current_task": "Free plan, 150 credits, test only.",
+      "current_task": "Cloud browser sign-in FAILED, login failed after Google accepted 5 times, retry pending. Still signed in on Saugat's laptop, Free plan, 150 credits.",
       "earnings_usd": 0,
       "id": "hailuo",
-      "last_message": "Signed in free, 150 credits, test only.",
-      "last_message_time": "2026-11-27T05:10:00+11:00",
+      "last_message": "Cloud browser sign-in failed, login failed, retry pending, still on laptop.",
+      "last_message_time": "2026-11-27T06:00:00+11:00",
       "name": "Hailuo",
       "progress_percent": 100,
       "real_ai_or_tool": "Hailuo Free, 150 credits, test only",
       "status": "online",
-      "tasks_blocked": 0,
+      "tasks_blocked": 1,
       "tasks_doing": 0,
       "tasks_done": 1
     }
@@ -457,21 +547,21 @@
     "currency": "USD",
     "earnings_total_usd": 0,
     "goal_monthly_usd": 1000,
-    "last_updated": "2026-11-27T05:16:30+11:00",
+    "last_updated": "2026-11-27T06:02:00+11:00",
     "refresh_seconds": 30,
     "stale_after_minutes": 5,
     "title": "My Money Team Flight Control",
     "updated_by": "Muse",
-    "version": 6,
+    "version": 7,
     "very_stale_after_minutes": 30
   },
   "totals": {
     "agents_offline": 0,
     "agents_online": 18,
     "agents_total": 18,
-    "tasks_blocked": 0,
+    "tasks_blocked": 1,
     "tasks_doing": 2,
-    "tasks_done": 25,
-    "tasks_total": 27
+    "tasks_done": 37,
+    "tasks_total": 40
   }
 }
