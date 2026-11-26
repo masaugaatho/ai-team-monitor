@@ -3,71 +3,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Money Team</title>
+<title>My Money Team Flight Control</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>My Money Team <span class="pill"><span class="dot working"></span>Live now</span></h1>
-<p class="sub">Your AI team, working for you. Updates by itself. No need to press anything.</p>
-
-<div class="card">
-<div class="big" id="earned">$0 of $1,000</div>
-<div class="muted" id="percent">0% there. Still $1,000 to go.</div>
-<div class="gauge" style="margin-top:10px"><div id="bar"></div></div>
-<div class="muted" style="margin-top:10px" id="counts">5 Finished, 3 Working, 0 Stuck</div>
-<div class="muted" id="updated">Last updated: loading</div>
+<div class="wrap">
+<header>
+<h1>My Money Team Flight Control</h1>
+<div class="live" id="live"><span class="dot"></span><span id="liveText">LIVE</span></div>
+</header>
+<p class="sub" id="updated">Loading data...</p>
+<div class="banner" id="banner"></div>
+<div class="gauge">
+<div class="big" id="gaugeText">$0 of $1,000</div>
+<div class="bar"><span id="gaugeBar" style="width:0%"></span></div>
+<p class="sub" id="gaugeLabel">Goal $1,000 per month. Earnings $0 so far.</p>
 </div>
-
-<h2>Agents</h2>
-<div id="agents"><p class="muted">Loading agents...</p></div>
-
-<h2>Tasks</h2>
-<div class="card"><ul id="tasks"></ul></div>
-
-<h2>Money earned</h2>
-<div class="card"><p id="earnings">No money yet. $0 so far this month. This page only shows real money, never fake money.</p></div>
-
-<footer>Free GitHub Pages site. No passwords, no private details here. Muse updates the data when a team finishes.</footer>
-
+<div class="counts" id="counts"></div>
+<div class="cards" id="cards"></div>
+<div class="log">
+<h2>Live Activity Log</h2>
+<ul id="log"></ul>
+</div>
+<footer>Data refreshes every 30 seconds. Stale if no update for 5 minutes. Repo: masaugaatho/ai-team-monitor. No money yet. $0 so far this month. This page only shows real money, never fake money.</footer>
+</div>
 <script>
-async function load() {
-  try {
-    const res = await fetch('data.json?x=' + Date.now());
-    const d = await res.json();
-    const goal = d.monthly_goal_usd || 1000;
-    const earned = d.earnings_usd || 0;
-    const pct = goal ? Math.round(earned / goal * 100) : 0;
-    document.getElementById('earned').textContent = '$' + earned + ' of $' + goal;
-    document.getElementById('percent').textContent = pct + '% there. Still $' + (goal - earned) + ' to go.';
-    document.getElementById('bar').style.width = Math.min(100, pct) + '%';
-    const done = (d.tasks || []).filter(t => t.status === 'done').length;
-    const doing = (d.tasks || []).filter(t => t.status === 'doing').length;
-    const stuck = (d.tasks || []).filter(t => t.status === 'blocked').length;
-    document.getElementById('counts').textContent = done + ' Finished, ' + doing + ' Working, ' + stuck + ' Stuck';
-    document.getElementById('updated').textContent = 'Last updated: ' + (d.last_updated || 'unknown');
-    const agents = (d.agents || []).slice().sort((a, b) => (a.status === 'working' ? 0 : 1) - (b.status === 'working' ? 0 : 1));
-    document.getElementById('agents').innerHTML = agents.map(a => {
-      const dot = a.status === 'working' ? 'working' : a.status === 'done' ? 'done' : 'queued';
-      const label = a.status === 'working' ? 'Working' : a.status === 'done' ? 'Finished' : a.status;
-      return '<div class="agent"><h3><span class="dot ' + dot + '"></span>' + a.name + '</h3>' +
-        '<p>' + a.role + '</p>' +
-        '<p><span class="pill">' + label + '</span></p>' +
-        '<p><strong>Now:</strong> ' + a.current_task + '</p>' +
-        '<p class="muted">Tools: ' + a.tools + '</p></div>';
-    }).join('');
-    document.getElementById('tasks').innerHTML = (d.tasks || []).map(t => {
-      const icon = t.status === 'done' ? 'Finished' : t.status === 'doing' ? 'Working' : t.status;
-      return '<li><strong>' + icon + ':</strong> ' + t.title + '</li>';
-    }).join('');
-    if ((d.earnings || []).length) {
-      document.getElementById('earnings').textContent = d.earnings.map(e => e.date + ' ' + e.source + ' $' + e.amount_usd).join(', ');
-    }
-  } catch (e) {
-    document.getElementById('agents').innerHTML = '<p>Could not load data yet. Please refresh in a minute.</p>';
-  }
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function fmtTime(iso) {
+  if (!iso) return "No time yet";
+  var d = new Date(iso);
+  return d.toLocaleTimeString("en-AU", { hour: "2-digit", minute: "2-digit", timeZone: "Australia/Sydney" }) + " AEDT";
+}
+function render(data) {
+  var meta = data.meta, totals = data.totals;
+  var pct = meta.goal_monthly_usd ? Math.round(100 * meta.earnings_total_usd / meta.goal_monthly_usd) : 0;
+  document.getElementById("gaugeText").textContent = "$" + meta.earnings_total_usd + " of $" + meta.goal_monthly_usd;
+  document.getElementById("gaugeBar").style.width = pct + "%";
+  document.getElementById("gaugeLabel").textContent = "Goal $" + meta.goal_monthly_usd + " per month. Earnings $" + meta.earnings_total_usd + " so far. " + pct + "% there.";
+  var updated = new Date(meta.last_updated);
+  var ageMin = Math.max(0, Math.round((Date.now() - updated.getTime()) / 60000));
+  document.getElementById("updated").textContent = "Updated " + fmtTime(meta.last_updated) + ", " + ageMin + " min ago. Version " + meta.version + ".";
+  var live = document.getElementById("live");
+  var banner = document.getElementById("banner");
+  live.className = "live";
+  banner.className = "banner";
+  if (ageMin >= meta.very_stale_after_minutes) { live.classList.add("verystale"); document.getElementById("liveText").textContent = "VERY STALE"; banner.textContent = "Data is very stale. Last update " + ageMin + " minutes ago. The monitor may be down."; banner.classList.add("show"); }
+  else if (ageMin >= meta.stale_after_minutes) { live.classList.add("stale"); document.getElementById("liveText").textContent = "STALE"; banner.textContent = "Data is stale. Last update " + ageMin + " minutes ago. Check if the updater is running."; banner.classList.add("show"); }
+  else { document.getElementById("liveText").textContent = "LIVE"; }
+  var counts = [
+    ["Agents online", totals.agents_online + " of " + totals.agents_total],
+    ["Tasks done", totals.tasks_done],
+    ["Tasks doing", totals.tasks_doing],
+    ["Tasks blocked", totals.tasks_blocked]
+  ];
+  document.getElementById("counts").innerHTML = counts.map(function(c) { return '<div class="count"><b>' + esc(c[1]) + '</b><span>' + esc(c[0]) + '</span></div>'; }).join("");
+  var agents = data.agents.slice().sort(function(a, b) {
+    if (a.status !== b.status) return a.status === "online" ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+  document.getElementById("cards").innerHTML = agents.map(function(a) {
+    var also = a.also_communicating_with && a.also_communicating_with.length ? "<p><span class=\"label\">Also talking to</span>" + esc(a.also_communicating_with.join(", ")) + "</p>" : "";
+    return '<div class="card ' + esc(a.status) + '">' +
+      '<h2>' + esc(a.name) + '</h2>' +
+      '<p class="tool">' + esc(a.real_ai_or_tool) + '</p>' +
+      '<div class="status ' + esc(a.status) + '"><span class="dot"></span>' + esc(a.status.toUpperCase()) + '</div>' +
+      '<div class="pbar"><span style="width:' + a.progress_percent + '%"></span></div>' +
+      '<p>Progress: ' + a.progress_percent + '%</p>' +
+      '<p><span class="label">Current task</span>' + esc(a.current_task) + '</p>' +
+      '<p><span class="label">Last message</span>' + esc(a.last_message) + ' ' + fmtTime(a.last_message_time) + '</p>' +
+      '<p><span class="label">Communicating with</span>' + esc(a.communicating_with) + '</p>' + also +
+      '<p><span class="label">Tasks</span>Done ' + a.tasks_done + ', Doing ' + a.tasks_doing + ', Blocked ' + a.tasks_blocked + '</p>' +
+      '<p><span class="label">Earnings</span>$' + a.earnings_usd + '</p>' +
+      '</div>';
+  }).join("");
+  document.getElementById("log").innerHTML = data.activity_log.slice(0, 50).map(function(e) {
+    return '<li><time>' + fmtTime(e.time) + '</time><b>' + esc(e.from) + ' -&gt; ' + esc(e.to) + ':</b> ' + esc(e.message) + '</li>';
+  }).join("");
+}
+function load() {
+  fetch("data.json?cache=" + Date.now()).then(function(r) { return r.json(); }).then(render).catch(function() {
+    document.getElementById("updated").textContent = "Could not fetch data.json. Showing last good data.";
+  });
 }
 load();
-setInterval(load, 60000);
+setInterval(load, 30000);
 </script>
 </body>
 </html>
