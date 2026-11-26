@@ -36,6 +36,8 @@
 <div class="cards" id="cardsTeam"></div>
 <h2 class="section">Money Ways</h2>
 <div class="cards" id="cardsWays"></div>
+<h2 class="section">Other Work</h2>
+<div class="cards" id="cardsWork"></div>
 <div class="log">
 <h2>Live Activity Log</h2>
 <ul id="log"></ul>
@@ -112,8 +114,9 @@ function render(data) {
     if (a.status !== b.status) return a.status === "online" ? -1 : 1;
     return a.name.localeCompare(b.name);
   });
-  document.getElementById("cardsTeam").innerHTML = agents.filter(function(a) { return a.group !== "money-way"; }).map(cardHtml).join("");
+  document.getElementById("cardsTeam").innerHTML = agents.filter(function(a) { return a.group === "team"; }).map(cardHtml).join("");
   document.getElementById("cardsWays").innerHTML = agents.filter(function(a) { return a.group === "money-way"; }).map(cardHtml).join("");
+  document.getElementById("cardsWork").innerHTML = agents.filter(function(a) { return a.group === "work"; }).map(cardHtml).join("");
   document.getElementById("log").innerHTML = data.activity_log.slice(0, 50).map(function(e) {
     return '<li><time>' + fmtTime(e.time) + '</time><b>' + esc(e.from) + ' -&gt; ' + esc(e.to) + ':</b> ' + esc(e.message) + '</li>';
   }).join("");
